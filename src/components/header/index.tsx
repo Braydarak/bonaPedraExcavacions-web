@@ -10,6 +10,7 @@ const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
+  
 
   // Detectar scroll
   useEffect(() => {
@@ -87,13 +88,22 @@ const Header: React.FC = () => {
         {/* Menú desktop */}
         <div className="hidden md:flex items-center gap-10">
           <nav className="flex gap-8 text-md font-medium text-[#2E2E2E]">
-            <a href="#sobre" className="hover:text-black transition">
+            <a
+              href="#sobre"
+              className="relative text-[#2E2E2E] after:absolute after:left-0 after:-bottom-0 after:h-[2px] after:w-full after:bg-[#2E2E2E] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+            >
               {t("header.about")}
             </a>
-            <a href="#servicios" className="hover:text-black transition">
+            <a
+              href="#servicios"
+              className="relative text-[#2E2E2E] after:absolute after:left-0 after:-bottom-0 after:h-[2px] after:w-full after:bg-[#2E2E2E] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+            >
               {t("header.services")}
             </a>
-            <a href="#contacto" className="hover:text-black transition">
+            <a
+              href="#contacto"
+              className="relative text-[#2E2E2E] after:absolute after:left-0 after:-bottom-0 after:h-[2px] after:w-full after:bg-[#2E2E2E] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+            >
               {t("header.contact")}
             </a>
           </nav>
@@ -149,22 +159,22 @@ const Header: React.FC = () => {
             </a>
           </nav>
           <div className="flex justify-between items-center w-full">
-             <div className="flex flex-col gap-2 text-sm text-black">
-            <a
-              href="tel:+34610429243"
-              className="flex items-center gap-2 hover:underline text-xs"
-            >
-              <Phone className="w-3 h-3" />
-              +34 610 429 243
-            </a>
-            <a
-              href="mailto:info@excavacionsbonapedra.com"
-              className="flex items-center text-xs gap-2 hover:underline"
-            >
-              <Mail className="w-3 h-3" />
-              info@excavacionsbonapedra.com
-            </a>
-          </div>
+            <div className="flex flex-col gap-2 text-sm text-black">
+              <a
+                href="tel:+34610429243"
+                className="flex items-center gap-2 hover:underline text-xs"
+              >
+                <Phone className="w-3 h-3" />
+                +34 610 429 243
+              </a>
+              <a
+                href="mailto:info@excavacionsbonapedra.com"
+                className="flex items-center text-xs gap-2 hover:underline"
+              >
+                <Mail className="w-3 h-3" />
+                info@excavacionsbonapedra.com
+              </a>
+            </div>
             <LanguageSwitcher />
           </div>
         </div>
