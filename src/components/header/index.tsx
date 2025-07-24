@@ -54,25 +54,33 @@ const Header: React.FC = () => {
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
 
+  // Función para hacer scroll arriba
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (isOpen) setIsOpen(false);
+  };
+
   return (
     <header className="fixed top-0 left-0 w-full h-24 z-50 bg-white/90 backdrop-blur border-b border-gray-200">
       <div className="w-full mx-auto px-4 py-3 flex items-center h-full justify-between">
-        {/* Logo */}
-       <div className="flex items-center gap-2 pl-90">
+        {/* Logo (scroll to top sin # en URL) */}
+        <div
+          onClick={scrollToTop}
+          className="flex items-center gap-2 pl-90 cursor-pointer"
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") scrollToTop();
+          }}
+        >
           <img src={Logo} alt="Logo Bona Pedra" className="h-14" />
         </div>
 
         {/* Menú desktop */}
         <nav className="hidden md:flex items-center gap-10 text-sm font-medium text-[#2E2E2E]">
-          <a href="#sobre" className="hover:text-black transition">
-            Quiénes somos
-          </a>
-          <a href="#servicios" className="hover:text-black transition">
-            Servicios
-          </a>
-          <a href="#contacto" className="hover:text-black transition">
-            Contacto
-          </a>
+          <a href="#sobre" className="hover:text-black transition">Quiénes somos</a>
+          <a href="#servicios" className="hover:text-black transition">Servicios</a>
+          <a href="#contacto" className="hover:text-black transition">Contacto</a>
         </nav>
 
         {/* Contacto */}
@@ -103,15 +111,9 @@ const Header: React.FC = () => {
           className="absolute top-24 left-0 w-full bg-white/90 px-6 py-4 shadow-lg border-t border-gray-200"
         >
           <nav className="flex flex-col space-y-4 text-md font-medium text-[#2E2E2E]">
-            <a href="#sobre" onClick={toggleMenu}>
-              Quiénes somos
-            </a>
-            <a href="#servicios" onClick={toggleMenu}>
-              Servicios
-            </a>
-            <a href="#contacto" onClick={toggleMenu}>
-              Contacto
-            </a>
+            <a href="#sobre" onClick={toggleMenu}>Quiénes somos</a>
+            <a href="#servicios" onClick={toggleMenu}>Servicios</a>
+            <a href="#contacto" onClick={toggleMenu}>Contacto</a>
           </nav>
         </div>
       )}
