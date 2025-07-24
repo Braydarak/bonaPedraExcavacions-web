@@ -6,6 +6,7 @@ import ContactSection from "./pages/contact";
 import Hero from "./pages/hero";
 import ServicesSection from "./pages/services";
 import "./i18n"; 
+import WhatsappButton from "./components/whatsappButton";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <ServicesSection />
         <ContactSection />
       </main>
+      <WhatsappButton />
       <Footer />
     </>
   );
