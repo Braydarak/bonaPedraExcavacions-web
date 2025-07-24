@@ -1,0 +1,50 @@
+{
+  "header": {
+    "about": "About Us",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "footer": {
+    "description": "Professional excavations with modern machinery and commitment in every project.",
+    "sections": "Sections",
+    "contact": "Contact",
+    "rights": "All rights reserved."
+  },
+  "hero": {
+    "title": "Professional Excavations",
+    "subtitle": "Building from the ground up with commitment, safety, and efficiency.",
+    "button": "Request a quote"
+  },
+  "about": {
+    "label": "about us",
+    "title": "Commitment that leaves a mark",
+    "p1": "At Bona Pedra, we don't just move earth: we move boundaries. We were born with the strength of big ideas and the support of a team passionate about doing things right, from the very first dig.",
+    "p2": "We specialize in excavations, leveling, and site preparation. We use modern machinery and work with clear deadlines, constant communication, and personalized attention.",
+    "p3": "Our goal is to build relationships as solid as the ground we prepare. We know that a good foundation is essential for any project to grow strong and secure."
+  },
+  "services": {
+    "label": "our services",
+    "title": "Everything we can do for you",
+    "items": [
+      "General excavations",
+      "Land leveling",
+      "Trenches and piping",
+      "Earthmoving",
+      "Machinery rental",
+      "Preparation for civil works"
+    ]
+  },
+  "contact": {
+    "label": "contact",
+    "title": "Get in touch",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "message": "Message",
+      "messagePlaceholder": "Tell us how we can help you...",
+      "submit": "Send message"
+    }
+  }
+}

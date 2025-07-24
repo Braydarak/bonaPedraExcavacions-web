@@ -1,13 +1,15 @@
 import React, { useRef, useState } from "react";
 import CustomButton from "../../components/customButton";
+import { useTranslation } from "react-i18next";
 
 const Hero: React.FC = () => {
+  const { t } = useTranslation();
   const [videoReady, setVideoReady] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const handleVideoReady = () => {
     setVideoReady(true);
-    videoRef.current?.play(); // Asegura que se reproduce cuando esté listo
+    videoRef.current?.play();
   };
 
   return (
@@ -20,7 +22,7 @@ const Hero: React.FC = () => {
         aria-hidden="true"
       />
 
-      {/* Video (oculto hasta que esté listo) */}
+      {/* Video */}
       <video
         ref={videoRef}
         className={`absolute top-0 left-0 w-full h-full object-cover z-0 transition-opacity duration-700 ${
@@ -40,23 +42,23 @@ const Hero: React.FC = () => {
         />
       </video>
 
-      {/* Capa oscura encima */}
+      {/* Overlay oscuro */}
       <div className="absolute inset-0 bg-black/50 z-10" />
 
       {/* Contenido */}
       <div className="z-20 text-center text-white px-4 max-w-3xl">
         <h1 className="text-4xl md:text-6xl font-bold mb-4 uppercase">
-          Excavaciones profesionales
+          {t("hero.title")}
         </h1>
         <p className="text-lg md:text-2xl mb-10">
-          Construyendo desde la base con compromiso, seguridad y eficiencia.
+          {t("hero.subtitle")}
         </p>
         <CustomButton
           variant="secondary"
           size="lg"
           onClick={() => (window.location.href = "/#contacto")}
         >
-          Pedir presupuesto
+          {t("hero.button")}
         </CustomButton>
       </div>
     </section>

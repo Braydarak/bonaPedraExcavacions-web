@@ -1,0 +1,50 @@
+{
+  "header": {
+    "about": "Über uns",
+    "services": "Leistungen",
+    "contact": "Kontakt"
+  },
+  "footer": {
+    "description": "Professionelle Erdarbeiten mit moderner Ausrüstung und Engagement bei jedem Projekt.",
+    "sections": "Bereiche",
+    "contact": "Kontakt",
+    "rights": "Alle Rechte vorbehalten."
+  },
+  "hero": {
+    "title": "Professionelle Erdarbeiten",
+    "subtitle": "Bauen von Grund auf mit Engagement, Sicherheit und Effizienz.",
+    "button": "Angebot anfordern"
+  },
+  "about": {
+    "label": "über uns",
+    "title": "Engagement, das Spuren hinterlässt",
+    "p1": "Bei Bona Pedra bewegen wir nicht nur Erde – wir verschieben Grenzen. Wir wurden mit der Kraft großer Ideen und der Unterstützung eines leidenschaftlichen Teams gegründet, das vom ersten Spatenstich an alles richtig machen will.",
+    "p2": "Wir sind spezialisiert auf Erdarbeiten, Planierungen und Grundstücksvorbereitungen. Wir arbeiten mit moderner Ausrüstung, klaren Fristen, ständiger Kommunikation und individueller Betreuung.",
+    "p3": "Unser Ziel ist es, Beziehungen aufzubauen, die genauso stabil sind wie der Boden, den wir vorbereiten. Denn wir wissen: Ein solides Fundament ist entscheidend dafür, dass jedes Projekt sicher wachsen kann."
+  },
+  "services": {
+    "label": "unsere leistungen",
+    "title": "Was wir alles für Sie tun können",
+    "items": [
+      "Allgemeine Aushubarbeiten",
+      "Geländenivellierung",
+      "Gräben und Kanäle",
+      "Erdbewegung",
+      "Maschinenvermietung",
+      "Vorbereitung für Tiefbauarbeiten"
+    ]
+  },
+  "contact": {
+    "label": "kontakt",
+    "title": "Nehmen Sie Kontakt auf",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Ihr Name",
+      "email": "E-Mail",
+      "emailPlaceholder": "ihre@email.com",
+      "message": "Nachricht",
+      "messagePlaceholder": "Erzählen Sie uns, wie wir Ihnen helfen können...",
+      "submit": "Nachricht senden"
+    }
+  }
+}

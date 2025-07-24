@@ -5,6 +5,7 @@ import AboutSection from "./pages/about";
 import ContactSection from "./pages/contact";
 import Hero from "./pages/hero";
 import ServicesSection from "./pages/services";
+import "./i18n"; 
 
 function App() {
   return (

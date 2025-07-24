@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import CustomInput from "../../components/customInput";
 import CustomButton from "../../components/customButton";
 
 const ContactSection: React.FC = () => {
+  const { t } = useTranslation();
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -25,39 +28,39 @@ const ContactSection: React.FC = () => {
       <div className="w-full h-[80vh] flex flex-col md:flex-row items-stretch overflow-hidden mb-[5rem] md:mb-0">
         {/* Formulario */}
         <div className="w-full md:w-1/2 h-full px-6 py-10 flex flex-col justify-center">
-          <div className="max-w-xl mx-auto text-[#2E2E2E]">
+          <div className="w-full max-w-xl mx-auto text-[#2E2E2E]">
             <span className="uppercase text-sm tracking-widest text-gray-500 mb-2 block">
-              contacto
+              {t("contact.label")}
             </span>
-            <h2 className="text-3xl md:text-5xl font-extrabold uppercase mb-6">
-              Ponete en contacto
+            <h2 className="text-3xl md:text-5xl font-extrabold uppercase mb-8">
+              {t("contact.title")}
             </h2>
             <div className="h-1 w-16 bg-[#2E2E2E] mb-8" />
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4 w-full">
               <CustomInput
-                label="Nombre"
+                label={t("contact.form.name")}
                 name="name"
                 value={form.name}
                 onChange={handleChange}
                 required
-                placeholder="Tu nombre"
+                placeholder={t("contact.form.namePlaceholder")}
               />
               <CustomInput
-                label="Email"
+                label={t("contact.form.email")}
                 name="email"
                 type="email"
                 value={form.email}
                 onChange={handleChange}
                 required
-                placeholder="tu@email.com"
+                placeholder={t("contact.form.emailPlaceholder")}
               />
               <div className="flex flex-col">
                 <label
                   htmlFor="message"
-                  className="mb-1 text-sm font-medium text-[#2E2E2E]"
+                  className="mb-1 text-start text-md font-medium text-[#2E2E2E]"
                 >
-                  Mensaje
+                  {t("contact.form.message")}
                 </label>
                 <textarea
                   id="message"
@@ -66,13 +69,15 @@ const ContactSection: React.FC = () => {
                   value={form.message}
                   onChange={handleChange}
                   required
-                  placeholder="Contanos en qué podemos ayudarte..."
-                  className="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#2E2E2E]"
+                  placeholder={t("contact.form.messagePlaceholder")}
+                  className="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#2E2E2E] mb-0 md:mb-4"
                 />
               </div>
-              <CustomButton type="submit" variant="primary" size="md">
-                Enviar mensaje
-              </CustomButton>
+              <div className="flex w-full md:mb-0 mb-8" >
+                <CustomButton type="submit" variant="primary" size="lg" className="w-full">
+                  {t("contact.form.submit")}
+                </CustomButton>
+              </div>
             </form>
           </div>
         </div>

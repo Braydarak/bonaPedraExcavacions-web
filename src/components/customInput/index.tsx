@@ -22,7 +22,7 @@ const CustomInput: React.FC<Props> = ({
 }) => {
   return (
     <div className="flex flex-col mb-4">
-      {label && <label htmlFor={name} className="mb-1 text-sm font-medium text-justify text-[#2E2E2E]">{label}</label>}
+      {label && <label htmlFor={name} className="mb-1 text-md font-medium text-justify text-[#2E2E2E]">{label}</label>}
       <input
         id={name}
         name={name}
