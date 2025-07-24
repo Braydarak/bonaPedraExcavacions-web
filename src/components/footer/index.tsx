@@ -1,39 +1,41 @@
 import React from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
-import Logo from "../../assets/logo_BonaPedra.avif";
+import Logo from "/logo_BonaPedra_white.avif";
+import { useTranslation } from "react-i18next";
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-[#6A5E4E] text-white px-6 py-12">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
-        {/* Logo o nombre */}
+        {/* Logo + descripción */}
         <div className="flex flex-col justify-center items-center">
-          <img src={Logo} alt="Bona Pedra logo" className="w-50 mb-5 invert" />{" "}
+          <img src={Logo} alt="Bona Pedra logo" className="w-50 mb-5" />
           <p className="text-sm pl-10 pr-10 text-gray-300">
-            Excavaciones profesionales con maquinaria moderna y compromiso en
-            cada proyecto.
+            {t("footer.description")}
           </p>
         </div>
 
         {/* Navegación */}
         <div className="md:block hidden">
           <h4 className="text-lg font-semibold mb-3 uppercase tracking-wide">
-            Secciones
+            {t("footer.sections")}
           </h4>
           <ul className="space-y-2 text-gray-300 text-sm">
             <li>
               <a href="#sobre" className="hover:text-white transition">
-                Quiénes somos
+                {t("header.about")}
               </a>
             </li>
             <li>
               <a href="#servicios" className="hover:text-white transition">
-                Servicios
+                {t("header.services")}
               </a>
             </li>
             <li>
               <a href="#contacto" className="hover:text-white transition">
-                Contacto
+                {t("header.contact")}
               </a>
             </li>
           </ul>
@@ -42,18 +44,24 @@ const Footer: React.FC = () => {
         {/* Contacto */}
         <div className="flex flex-col justify-center items-center">
           <h4 className="text-lg font-semibold mb-3 uppercase tracking-wide">
-            Contacto
+            {t("footer.contact")}
           </h4>
           <ul className="space-y-3 text-sm text-gray-300">
-            <li className="flex items-center gap-3">
+            <a
+              href="tel:+34610429243"
+              className="flex items-center gap-2 hover:underline"
+            >
               <Phone className="w-4 h-4" />
-              +34 600 000 000
-            </li>
-            <li className="flex items-center gap-3">
+              +34 610 429 243
+            </a>
+            <a
+              href="mailto:info@excavacionsbonapedra.com"
+              className="flex items-center gap-2 hover:underline"
+            >
               <Mail className="w-4 h-4" />
               info@excavacionsbonapedra.com
-            </li>
-            <li className="flex items-center gap-3">
+            </a>
+            <li className="flex items-center gap-2">
               <MapPin className="w-4 h-4" />
               Mallorca, España
             </li>
@@ -61,9 +69,10 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
+      {/* Copyright */}
       <div className="border-t border-gray-700 mt-12 pt-6 text-center text-xs text-gray-400">
-        &copy; {new Date().getFullYear()} Bona Pedra Excavacions. Todos los derechos
-        reservados.
+        &copy; {new Date().getFullYear()} Bona Pedra Excavacions.{" "}
+        {t("footer.rights")}
       </div>
     </footer>
   );
