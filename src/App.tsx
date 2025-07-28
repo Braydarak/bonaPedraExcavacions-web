@@ -7,10 +7,12 @@ import Hero from "./pages/hero";
 import ServicesSection from "./pages/services";
 import "./i18n"; 
 import WhatsappButton from "./components/whatsappButton";
+import LenguageManager from "./components/lenguageManager";
 
 function App() {
   return (
     <>
+      <LenguageManager />
       <Header />
       <main className="pt-16">
         <Hero />
