@@ -9,8 +9,8 @@ const Header: React.FC = () => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isWideScreen, setIsWideScreen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
-  
 
   // Detectar scroll
   useEffect(() => {
@@ -19,6 +19,17 @@ const Header: React.FC = () => {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Detectar ancho >= 1600px
+  useEffect(() => {
+    const handleResize = () => {
+      setIsWideScreen(window.innerWidth <= 1700);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   // Animación del menú
@@ -41,7 +52,7 @@ const Header: React.FC = () => {
     }
   }, [isOpen]);
 
-  // Cierre al hacer clic fuera
+  // Cerrar menú al hacer clic fuera
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -71,7 +82,11 @@ const Header: React.FC = () => {
           : "bg-white"
       }`}
     >
-      <div className="w-full mx-auto px-4 py-3 flex items-center justify-between h-full pl-2 md:pl-[20rem]">
+      <div
+        className={`w-full mx-auto px-4 py-3 flex items-center justify-between h-full ${
+          isWideScreen ? "md:pl-10 " : "pl-2 xl:pl-[20rem] pr-0 xl:pr-[10rem]"
+        }`}
+      >
         {/* Logo */}
         <div
           onClick={scrollToTop}
@@ -82,11 +97,11 @@ const Header: React.FC = () => {
             if (e.key === "Enter" || e.key === " ") scrollToTop();
           }}
         >
-          <img src={Logo} alt="Logo Bona Pedra" className="h-14" />
+          <img src={Logo} alt="Logo Bona Pedra" className="h-auto w-45 md:w-60" />
         </div>
 
         {/* Menú desktop */}
-        <div className="hidden md:flex items-center gap-10">
+        <div className="hidden xl:flex items-center gap-10">
           <nav className="flex gap-8 text-md font-medium text-[#2E2E2E]">
             <a
               href="#sobre"
@@ -110,7 +125,7 @@ const Header: React.FC = () => {
         </div>
 
         {/* Contacto + idioma (desktop) */}
-        <div className="hidden md:flex items-center pr-4 gap-6 md:pr-[10rem] pr-0">
+        <div className="hidden xl:flex items-center gap-6">
           <div className="flex flex-col gap-2 text-sm text-black">
             <a
               href="tel:+34610429243"
@@ -131,7 +146,7 @@ const Header: React.FC = () => {
         </div>
 
         {/* Botón hamburguesa (mobile) */}
-        <div className="md:hidden flex items-center gap-3">
+        <div className="xl:hidden flex items-center gap-3">
           <button
             className="text-[#2E2E2E] focus:outline-none z-[60]"
             onClick={toggleMenu}
@@ -145,7 +160,7 @@ const Header: React.FC = () => {
       {isOpen && (
         <div
           ref={menuRef}
-          className="md:hidden absolute top-24 left-0 w-full bg-white/90 px-6 py-6 shadow-lg border-t border-gray-200 z-40 flex flex-col gap-4"
+          className="xl:hidden absolute top-24 left-0 w-full bg-white/90 px-6 py-6 shadow-lg border-t border-gray-200 z-40 flex flex-col gap-4"
         >
           <nav className="flex flex-col space-y-4 text-md font-medium text-[#2E2E2E]">
             <a href="#sobre" onClick={toggleMenu}>
