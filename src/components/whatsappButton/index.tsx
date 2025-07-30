@@ -3,7 +3,7 @@ import whatsappIcon from "../../assets/whatsapp.avif";
 const WhatsappButton = () => {
   const phone = "34610429243";
   const message =
-    "Hola, estoy interesado/a en una propiedad de Gregal Properties.";
+    "Hola, estoy interesado/a en";
   const link = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
   return (
