@@ -47,13 +47,6 @@ Sitio web moderno y responsive para **Bona Pedra Excavacions**, una empresa espe
    http://localhost:3000
    ```
 
-## 🔧 Personalización
-
-- Editá los textos multilingües en la carpeta `public/locales/`
-- Modificá el video de portada en `public/video-excavadora.mp4`
-- Reemplazá las imágenes en `public/` (por ejemplo `video-screenshoot.avif`, etc.)
-- Configurá el email de contacto en `src/components/contactForm/` usando EmailJS
-
 ## 📄 Licencia
 
 Este proyecto es de uso privado para la empresa Bona Pedra Excavacions.
