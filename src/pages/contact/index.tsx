@@ -24,8 +24,8 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contacto" className="bg-white w-full scroll-mt-[7rem]">
-      <div className="w-full h-[80vh] flex flex-col md:flex-row items-stretch overflow-hidden mb-[5rem] md:mb-0">
+    <section id="contacto" className="bg-[var(--color-base)] w-full scroll-mt-[7rem]">
+      <div className="w-full min-h-dvh md:min-h-[70vh] flex flex-col md:flex-row items-stretch md:mb-0 mb-12">
         {/* Formulario */}
         <div className="w-full md:w-1/2 h-full px-6 py-10 flex flex-col justify-center">
           <div className="w-full max-w-xl mx-auto text-[#2E2E2E]">
@@ -58,7 +58,7 @@ const ContactSection: React.FC = () => {
               <div className="flex flex-col">
                 <label
                   htmlFor="message"
-                  className="mb-1 text-start text-md font-medium text-[#2E2E2E]"
+                  className="mb-1 text-start text-md font-semibold text-[#2E2E2E]"
                 >
                   {t("contact.form.message")}
                 </label>
@@ -70,7 +70,7 @@ const ContactSection: React.FC = () => {
                   onChange={handleChange}
                   required
                   placeholder={t("contact.form.messagePlaceholder")}
-                  className="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#2E2E2E] mb-0 md:mb-4"
+                  className="px-4 py-2 rounded-md border border-[var(--color-accent)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] mb-0 md:mb-4"
                 />
               </div>
               <div className="flex w-full md:mb-0 mb-8" >
@@ -109,7 +109,7 @@ const ContactSection: React.FC = () => {
                 L0,100 
                 L0,0
               "
-              fill="white"
+              fill="#efeee9"
             />
           </svg>
         </div>

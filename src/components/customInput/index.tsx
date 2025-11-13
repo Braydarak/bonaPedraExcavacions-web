@@ -22,7 +22,7 @@ const CustomInput: React.FC<Props> = ({
 }) => {
   return (
     <div className="flex flex-col mb-4">
-      {label && <label htmlFor={name} className="mb-1 text-md font-medium text-justify text-[#2E2E2E]">{label}</label>}
+      {label && <label htmlFor={name} className="mb-1 text-md font-semibold text-justify text-[var(--color-primary)]">{label}</label>}
       <input
         id={name}
         name={name}
@@ -31,7 +31,7 @@ const CustomInput: React.FC<Props> = ({
         onChange={onChange}
         required={required}
         placeholder={placeholder}
-        className="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#2E2E2E]"
+        className="px-4 py-2 rounded-md border border-[var(--color-accent)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
       />
     </div>
   );

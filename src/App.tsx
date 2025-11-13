@@ -14,7 +14,7 @@ function App() {
     <>
       <LenguageManager />
       <Header />
-      <main className="pt-16">
+      <main className="pt-24">
         <Hero />
         <AboutSection />
         <ServicesSection />
