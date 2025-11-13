@@ -78,8 +78,8 @@ const Header: React.FC = () => {
     <header
       className={`fixed top-0 left-0 w-full h-24 z-50 transition-colors duration-300 ${
         scrolled
-          ? "bg-white/90 backdrop-blur border-b border-gray-200"
-          : "bg-white"
+          ? "bg-[rgba(239,238,233,0.90)] backdrop-blur border-b border-gray-200"
+          : "bg-[var(--color-base)]"
       }`}
     >
       <div
@@ -102,22 +102,22 @@ const Header: React.FC = () => {
 
         {/* Menú desktop */}
         <div className="hidden xl:flex items-center gap-10">
-          <nav className="flex gap-8 text-md font-medium text-[#2E2E2E]">
+          <nav className="flex gap-8 text-md font-medium text-[var(--color-primary)]">
             <a
               href="#sobre"
-              className="relative text-[#2E2E2E] after:absolute after:left-0 after:-bottom-0 after:h-[2px] after:w-full after:bg-[#2E2E2E] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+              className="relative text-[var(--color-primary)] after:absolute after:left-0 after:-bottom-0 after:h-[2px] after:w-full after:bg-[var(--color-accent)] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
             >
               {t("header.about")}
             </a>
             <a
               href="#servicios"
-              className="relative text-[#2E2E2E] after:absolute after:left-0 after:-bottom-0 after:h-[2px] after:w-full after:bg-[#2E2E2E] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+              className="relative text-[var(--color-primary)] after:absolute after:left-0 after:-bottom-0 after:h-[2px] after:w-full after:bg-[var(--color-accent)] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
             >
               {t("header.services")}
             </a>
             <a
               href="#contacto"
-              className="relative text-[#2E2E2E] after:absolute after:left-0 after:-bottom-0 after:h-[2px] after:w-full after:bg-[#2E2E2E] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
+              className="relative text-[var(--color-primary)] after:absolute after:left-0 after:-bottom-0 after:h-[2px] after:w-full after:bg-[var(--color-accent)] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
             >
               {t("header.contact")}
             </a>
@@ -162,7 +162,7 @@ const Header: React.FC = () => {
           ref={menuRef}
           className="xl:hidden absolute top-24 left-0 w-full bg-white/90 px-6 py-6 shadow-lg border-t border-gray-200 z-40 flex flex-col gap-4"
         >
-          <nav className="flex flex-col space-y-4 text-md font-medium text-[#2E2E2E]">
+          <nav className="flex flex-col space-y-4 text-md font-medium text-[var(--color-primary)]">
             <a href="#sobre" onClick={toggleMenu}>
               {t("header.about")}
             </a>

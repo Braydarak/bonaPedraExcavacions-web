@@ -1,4 +1,38 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300..900;1,300..900&display=swap");
+
+/* Optima local font faces */
+@font-face {
+  font-family: "Optima";
+  src: url("assets/fonts/optima/OPTIMA.TTF") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Optima";
+  src: url("assets/fonts/optima/Optima Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Optima";
+  src: url("assets/fonts/optima/OPTIMA_B.TTF") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Optima";
+  src: url("assets/fonts/optima/Optima_Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -6,8 +40,13 @@
   font-weight: 400;
 
   color-scheme: light dark;
+  /* Colores de tema */
+  --color-primary: #695f4d;
+  --color-secondary: #cbc7b7;
+  --color-accent: #be8c6b;
+  --color-base: #efeee9; /* blanco de marca */
   color: rgba(255, 255, 255, 0.87);
-  background-color: white;
+  background-color: #efeee9;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,6 +56,18 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Tipografía base: Merriweather para todo excepto h1/h2 */
+body {
+  font-family: "Merriweather", Georgia, "Times New Roman", serif;
+  font-weight: 400;
+}
+
+/* Titulares: usar Optima local con fallbacks seguros */
+h1,
+h2 {
+  font-family: "Optima", Candara, "Segoe UI", "Noto Sans", Arial, sans-serif;
 }
 
 

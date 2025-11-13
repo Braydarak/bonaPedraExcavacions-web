@@ -29,8 +29,8 @@ const CustomButton: React.FC<Props> = ({
   };
 
   const variantStyles = {
-    primary: 'bg-[#2E2E2E] text-white hover:bg-black',
-    secondary: 'bg-white text-black hover:bg-[#e0d6c3]',
+    primary: 'bg-[var(--color-primary)] text-[var(--color-base)] hover:opacity-90',
+    secondary: 'bg-[var(--color-secondary)] text-black hover:opacity-90',
   };
 
   return (

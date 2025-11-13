@@ -13,7 +13,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative flex items-center justify-center w-full h-screen overflow-hidden bg-black">
+    <section className="relative flex items-center justify-center w-full min-h-dvh md:min-h-screen overflow-hidden bg-black">
       {/* Imagen de fondo */}
       <img
         src="/video-screenshoot.avif"
