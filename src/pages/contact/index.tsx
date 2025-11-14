@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import CustomInput from "../../components/customInput";
 import CustomButton from "../../components/customButton";
+import Machine from "/machine.avif";
 
 const ContactSection: React.FC = () => {
   const { t } = useTranslation();
@@ -28,14 +29,14 @@ const ContactSection: React.FC = () => {
       <div className="w-full min-h-dvh md:min-h-[70vh] flex flex-col md:flex-row items-stretch md:mb-0 mb-12">
         {/* Formulario */}
         <div className="w-full md:w-1/2 h-full px-6 py-10 flex flex-col justify-center">
-          <div className="w-full max-w-xl mx-auto text-[#2E2E2E]">
-            <span className="uppercase text-sm tracking-widest text-gray-500 mb-2 block">
+          <div className="w-full max-w-xl mx-auto text-[var(--color-primary)]">
+            <span className="uppercase text-sm tracking-widest text-gray-500 font-semibold mb-2 block">
               {t("contact.label")}
             </span>
             <h2 className="text-3xl md:text-5xl font-extrabold uppercase mb-8">
               {t("contact.title")}
             </h2>
-            <div className="h-1 w-16 bg-[#2E2E2E] mb-8" />
+            <div className="h-1 w-16 bg-[var(--color-accent)] mb-8" />
 
             <form onSubmit={handleSubmit} className="space-y-4 w-full">
               <CustomInput
@@ -58,7 +59,7 @@ const ContactSection: React.FC = () => {
               <div className="flex flex-col">
                 <label
                   htmlFor="message"
-                  className="mb-1 text-start text-md font-semibold text-[#2E2E2E]"
+                  className="mb-1 text-start text-md font-semibold text-[var(--color-primary)]"
                 >
                   {t("contact.form.message")}
                 </label>
@@ -82,18 +83,24 @@ const ContactSection: React.FC = () => {
           </div>
         </div>
 
+
+
         {/* Imagen con sierra */}
-        <div className="w-full md:w-1/2 h-full relative">
-          <div
-            className="w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: "url('/machine.avif')" }}
+        <div className="hidden md:block w-full md:w-1/2 relative overflow-hidden md:min-h-[70vh]">
+          <img
+            src={Machine}
+            alt="Maquinaria"
+            className="absolute inset-0 w-full h-full object-cover z-0"
+            loading="lazy"
+            decoding="async"
           />
           <svg
-            className="hidden md:block absolute top-0 left-0 h-full w-[40px] z-10"
+            className="hidden md:block absolute top-0 left-0 h-full w-[48px] z-30 pointer-events-none"
             viewBox="0 0 10 100"
             preserveAspectRatio="none"
             xmlns="http://www.w3.org/2000/svg"
           >
+            
             <path
               d="
                 M0,0 
@@ -109,10 +116,12 @@ const ContactSection: React.FC = () => {
                 L0,100 
                 L0,0
               "
-              fill="#efeee9"
+              fill="var(--color-base)"
             />
           </svg>
+          
         </div>
+        
       </div>
     </section>
   );

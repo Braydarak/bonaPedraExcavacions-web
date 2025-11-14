@@ -1,6 +1,5 @@
 import React from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
-import Logo from "/logo_BonaPedra_white.avif";
 import { useTranslation } from "react-i18next";
 
 const Footer: React.FC = () => {
@@ -11,7 +10,16 @@ const Footer: React.FC = () => {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
         {/* Logo + descripción */}
         <div className="flex flex-col justify-center items-center">
-          <img src={Logo} alt="Bona Pedra logo" className="w-50 mb-5" />
+          <picture>
+            <source srcSet="/logo_BonaPedra_white.avif" type="image/avif" />
+            <img
+              src="/logo_BonaPedra_white.png"
+              alt="Bona Pedra logo"
+              className="w-50 mb-5"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
           <p className="text-sm pl-10 pr-10 text-gray-300">
             {t("footer.description")}
           </p>

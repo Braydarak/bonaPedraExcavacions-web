@@ -9,9 +9,9 @@ const AboutSection: React.FC = () => {
       id="sobre"
       className="bg-[var(--color-base)] w-full md:scroll-mt-[13rem] scroll-mt-[2rem]"
     >
-      <div className="w-full min-h-dvh md:min-h-[70vh] flex flex-col md:flex-row items-stretch pt-12 md:pt-0">
+      <div className="w-full min-h-dvh md:h-[700px] flex flex-col md:flex-row items-stretch md:items-center pt-12 md:pt-0">
         {/* Imagen con borde sierra */}
-        <div className="w-full md:w-1/2 h-full relative">
+        <div className="w-full md:w-1/2 h-full relative md:overflow-hidden">
           <div
             className="w-full h-full bg-cover bg-center"
             style={{ backgroundImage: "url('/excavaciones.avif')" }}
