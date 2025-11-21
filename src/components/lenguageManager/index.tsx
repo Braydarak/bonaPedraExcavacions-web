@@ -28,6 +28,16 @@ const LanguageManager = () => {
     updateMeta("description", t("seo.description"));
     updateMeta("og:title", t("seo.title"), true);
     updateMeta("og:description", t("seo.description"), true);
+
+    // Establecer locale para Open Graph
+    const localeMap: Record<string, string> = {
+      es: "es_ES",
+      en: "en",
+      de: "de_DE",
+      ca: "ca_ES",
+    };
+    const ogLocale = localeMap[i18n.language] || "es_ES";
+    updateMeta("og:locale", ogLocale, true);
   }, [i18n.language, t]);
 
   return null;

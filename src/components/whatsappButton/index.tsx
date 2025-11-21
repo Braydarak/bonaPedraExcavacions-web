@@ -1,4 +1,4 @@
-import whatsappIcon from "../../assets/whatsapp.avif";
+import whatsappIcon from "../../assets/whatsapp.png";
 
 const WhatsappButton = () => {
   const phone = "34610429243";
@@ -11,7 +11,7 @@ const WhatsappButton = () => {
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed md:bottom-6 bottom-4 right-5 md:right-10 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all"
+      className="fixed md:bottom-6 bottom-4 right-5 md:right-10 z-50 bg-[var(--color-primary)] hover:bg-[var(--color-accent)] text-[var(--color-base)] p-4 rounded-full shadow-lg transition-all"
       aria-label="WhatsApp"
     >
       <img src={whatsappIcon} alt="WhatsApp" className="w-8"/>
