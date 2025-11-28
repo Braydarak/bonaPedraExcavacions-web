@@ -25,25 +25,34 @@ const Footer: React.FC = () => {
           </p>
         </div>
 
-        {/* Navegación */}
+        {/* Legal */}
         <div className="md:block hidden">
           <h4 className="text-lg font-semibold mb-3 uppercase tracking-wide ">
-            {t("footer.sections")}
+            Legal
           </h4>
           <ul className="space-y-2 text-[#c3bfb7] text-sm">
             <li>
-              <a href="#sobre" className="hover:text-[var(--color-base)] transition">
-                {t("header.about")}
+              <a
+                href="/aviso-legal"
+                className="hover:text-[var(--color-base)] transition"
+              >
+                Aviso Legal
               </a>
             </li>
             <li>
-              <a href="#servicios" className="hover:text-[var(--color-base)] transition">
-                {t("header.services")}
+              <a
+                href="/politica-cookies"
+                className="hover:text-[var(--color-base)] transition"
+              >
+                Política de Cookies
               </a>
             </li>
             <li>
-              <a href="#contacto" className="hover:text-[var(--color-base)] transition">
-                {t("header.contact")}
+              <a
+                href="/politica-privacidad"
+                className="hover:text-[var(--color-base)] transition"
+              >
+                Política de Privacidad
               </a>
             </li>
           </ul>
