@@ -4,6 +4,7 @@ import { Mail, Phone, Menu, X } from "lucide-react";
 import gsap from "gsap";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../lenguajeSelector";
+import { useNavigate } from "react-router-dom";
 
 const Header: React.FC = () => {
   const { t } = useTranslation();
@@ -11,6 +12,7 @@ const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isWideScreen, setIsWideScreen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const navigate = useNavigate();
 
   // Detectar scroll
   useEffect(() => {
@@ -67,10 +69,75 @@ const Header: React.FC = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
+  // Bloquear scroll del documento cuando el menú móvil está abierto
+  useEffect(() => {
+    try {
+      if (isOpen) {
+        document.documentElement.style.overflow = "hidden";
+        document.body.style.overflow = "hidden";
+      } else {
+        document.documentElement.style.overflow = "";
+        document.body.style.overflow = "";
+      }
+    } catch {
+      // noop
+    }
+    return () => {
+      try {
+        document.documentElement.style.overflow = "";
+        document.body.style.overflow = "";
+      } catch {
+        // noop
+      }
+    };
+  }, [isOpen]);
+
   const toggleMenu = () => setIsOpen((prev) => !prev);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  const goHome = () => {
+    const isHome = window.location.pathname === "/";
+    if (!isHome) {
+      navigate("/");
+      requestAnimationFrame(() => {
+        try {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } catch {
+          window.scrollTo(0, 0);
+        }
+      });
+    } else {
+      try {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } catch {
+        window.scrollTo(0, 0);
+      }
+    }
+    if (isOpen) setIsOpen(false);
+  };
+
+  const goToSection = (id: string) => {
+    const isHome = window.location.pathname === "/";
+    if (!isHome) {
+      // Navegar a Home pasando el objetivo para realizar scroll suave allí
+      navigate("/", { state: { scrollTo: id } });
+    } else {
+      const el = document.getElementById(id);
+      if (el) {
+        try {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        } catch {
+          el.scrollIntoView();
+        }
+        try {
+          window.history.replaceState(null, "", `/#${id}`);
+        } catch {
+          // noop
+        }
+      } else {
+        // Fallback: actualizar hash
+        window.location.hash = id;
+      }
+    }
     if (isOpen) setIsOpen(false);
   };
 
@@ -89,34 +156,50 @@ const Header: React.FC = () => {
       >
         {/* Logo */}
         <div
-          onClick={scrollToTop}
+          onClick={goHome}
           className="flex items-center gap-2 cursor-pointer"
           role="button"
           tabIndex={0}
           onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") scrollToTop();
+            if (e.key === "Enter" || e.key === " ") goHome();
           }}
         >
-          <img src={Logo} alt="Logo Bona Pedra" className="h-auto w-45 md:w-60" />
+          <img
+            src={Logo}
+            alt="Logo Bona Pedra"
+            className="h-auto w-32 md:w-52 xl:w-60"
+          />
         </div>
 
         {/* Menú desktop */}
         <div className="hidden xl:flex items-center gap-10">
           <nav className="flex gap-8 text-md font-medium text-[var(--color-primary)]">
             <a
-              href="#sobre"
+              href="/#sobre"
+              onClick={(e) => {
+                e.preventDefault();
+                goToSection("sobre");
+              }}
               className="relative text-[var(--color-primary)] after:absolute after:left-0 after:-bottom-0 after:h-[2px] after:w-full after:bg-[var(--color-accent)] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
             >
               {t("header.about")}
             </a>
             <a
-              href="#servicios"
+              href="/#servicios"
+              onClick={(e) => {
+                e.preventDefault();
+                goToSection("servicios");
+              }}
               className="relative text-[var(--color-primary)] after:absolute after:left-0 after:-bottom-0 after:h-[2px] after:w-full after:bg-[var(--color-accent)] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
             >
               {t("header.services")}
             </a>
             <a
-              href="#contacto"
+              href="/#contacto"
+              onClick={(e) => {
+                e.preventDefault();
+                goToSection("contacto");
+              }}
               className="relative text-[var(--color-primary)] after:absolute after:left-0 after:-bottom-0 after:h-[2px] after:w-full after:bg-[var(--color-accent)] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
             >
               {t("header.contact")}
@@ -145,8 +228,11 @@ const Header: React.FC = () => {
           <LanguageSwitcher />
         </div>
 
-        {/* Botón hamburguesa (mobile) */}
+        {/* Idioma + botón hamburguesa (mobile) */}
         <div className="xl:hidden flex items-center gap-3">
+          <div className="z-[60]">
+            <LanguageSwitcher />
+          </div>
           <button
             className="text-[#2E2E2E] focus:outline-none z-[60]"
             onClick={toggleMenu}
@@ -160,38 +246,84 @@ const Header: React.FC = () => {
       {isOpen && (
         <div
           ref={menuRef}
-          className="xl:hidden absolute top-24 left-0 w-full bg-white/90 px-6 py-6 shadow-lg border-t border-gray-200 z-40 flex flex-col gap-4"
+          className="xl:hidden fixed top-24 left-0 right-0 h-[calc(100dvh-6rem)] bg-[var(--color-base)] px-6 py-6 shadow-lg border-t border-gray-200 z-40 flex flex-col items-center justify-center gap-6 overflow-y-auto"
         >
-          <nav className="flex flex-col space-y-4 text-md font-medium text-[var(--color-primary)]">
-            <a href="#sobre" onClick={toggleMenu}>
-              {t("header.about")}
-            </a>
-            <a href="#servicios" onClick={toggleMenu}>
-              {t("header.services")}
-            </a>
-            <a href="#contacto" onClick={toggleMenu}>
-              {t("header.contact")}
-            </a>
-          </nav>
-          <div className="flex justify-between items-center w-full">
-            <div className="flex flex-col gap-2 text-sm text-black">
+          {/* Navegación */}
+          <section className="flex flex-col gap-3">
+            <nav className="flex flex-col items-center text-center text-md font-medium text-[var(--color-primary)]">
               <a
-                href="tel:+34610429243"
-                className="flex items-center gap-2 hover:underline text-xs"
+                className="py-3 border-b border-gray-200 w-full max-w-xs"
+                href="/#sobre"
+                onClick={(e) => {
+                  e.preventDefault();
+                  goToSection("sobre");
+                }}
               >
-                <Phone className="w-3 h-3" />
-                +34 610 429 243
+                {t("header.about")}
               </a>
               <a
-                href="mailto:info@excavacionsbonapedra.com"
-                className="flex items-center text-xs gap-2 hover:underline"
+                className="py-3 border-b border-gray-200 w-full max-w-xs"
+                href="/#servicios"
+                onClick={(e) => {
+                  e.preventDefault();
+                  goToSection("servicios");
+                }}
               >
-                <Mail className="w-3 h-3" />
-                info@excavacionsbonapedra.com
+                {t("header.services")}
               </a>
-            </div>
-            <LanguageSwitcher />
-          </div>
+              <a
+                className="py-3 w-full max-w-xs"
+                href="/#contacto"
+                onClick={(e) => {
+                  e.preventDefault();
+                  goToSection("contacto");
+                }}
+              >
+                {t("header.contact")}
+              </a>
+            </nav>
+          </section>
+
+          {/* Separador entre navegación y legal */}
+          <div className="border-t border-gray-300 my-2 w-full"></div>
+
+          {/* Legal */}
+          <section className="flex flex-col gap-3">
+            <p className="text-xs uppercase tracking-wide text-[var(--color-primary)] text-center">
+              Legal
+            </p>
+            <ul className="flex flex-col items-center text-center text-md font-medium text-[var(--color-primary)]">
+              <li className="py-3 border-b border-gray-200 w-full max-w-xs">
+                <a
+                  className="block w-full"
+                  href="/aviso-legal"
+                  onClick={toggleMenu}
+                >
+                  Aviso Legal
+                </a>
+              </li>
+              <li className="py-3 border-b border-gray-200 w-full max-w-xs">
+                <a
+                  className="block w-full"
+                  href="/politica-cookies"
+                  onClick={toggleMenu}
+                >
+                  Política de Cookies
+                </a>
+              </li>
+              <li className="py-3 w-full max-w-xs">
+                <a
+                  className="block w-full"
+                  href="/politica-privacidad"
+                  onClick={toggleMenu}
+                >
+                  Política de Privacidad
+                </a>
+              </li>
+            </ul>
+          </section>
+
+          {/* Detalles eliminados según requerimiento */}
         </div>
       )}
     </header>

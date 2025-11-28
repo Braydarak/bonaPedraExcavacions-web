@@ -1,28 +1,21 @@
 import "./App.css";
-import Footer from "./components/footer";
-import Header from "./components/header";
-import AboutSection from "./pages/about";
-import ContactSection from "./pages/contact";
-import Hero from "./pages/hero";
-import ServicesSection from "./pages/services";
-import "./i18n"; 
-import WhatsappButton from "./components/whatsappButton";
-import LenguageManager from "./components/lenguageManager";
+import "./i18n";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/home";
+import LegalNoticePage from "./pages/legal-notice";
+import CookiesPolicyPage from "./pages/cookies-policy";
+import PrivacyPolicyPage from "./pages/privacy-policy";
 
 function App() {
   return (
-    <>
-      <LenguageManager />
-      <Header />
-      <main className="pt-24">
-        <Hero />
-        <AboutSection />
-        <ServicesSection />
-        <ContactSection />
-      </main>
-      <WhatsappButton />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/aviso-legal" element={<LegalNoticePage />} />
+        <Route path="/politica-cookies" element={<CookiesPolicyPage />} />
+        <Route path="/politica-privacidad" element={<PrivacyPolicyPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

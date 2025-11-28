@@ -56,21 +56,20 @@ const LanguageDropdown = () => {
   }, [open]);
 
   return (
-    <div className="relative block pl-10 z-[9999] overflow-visible">
+    <div className="relative block pl-2 z-[60] overflow-visible">
       {" "}
       <button
         ref={buttonRef}
         onClick={() => setOpen((prev) => !prev)}
         className="flex items-center justify-center gap-2 px-2 py-1 hover:bg-gray-100 transition rounded cursor-pointer"
       >
-        <img src={current.flag} alt={current.name} className="w-7 h-5" />
-        <ChevronDown className="w-8 h-15 text-[#2E2E2E] transition-transform duration-200" />
+        <img src={current.flag} alt={current.name} className="w-5 h-4 xl:w-6 xl:h-5" />
+        <ChevronDown className="w-4 h-4 xl:w-5 xl:h-5 text-[#2E2E2E] transition-transform duration-200" />
       </button>
       {open && (
         <div
           ref={dropdownRef}
-          className="absolute right-0 w-40 bg-white border border-gray-200 shadow-lg rounded z-[9999]
-            bottom-full mt-2 2xl:bottom-auto 2xl:top-full 2xl:mt-2"
+          className="absolute right-0 w-40 bg-white border border-gray-200 shadow-lg rounded z-[9999] top-full mt-2"
         >
           {languages.map((lang) => (
             <button
@@ -80,7 +79,7 @@ const LanguageDropdown = () => {
                 i18n.language === lang.code ? "bg-gray-100 font-semibold" : ""
               }`}
             >
-              <img src={lang.flag} alt={lang.name} className="w-5 h-5" />
+              <img src={lang.flag} alt={lang.name} className="w-4 h-4 xl:w-5 xl:h-5" />
               {lang.name}
             </button>
           ))}
